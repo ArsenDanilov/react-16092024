@@ -1,21 +1,28 @@
+import { useState, useEffect } from "react";
 import "./ScrollBar.css";
 
 export const ScrollBar = () => {
-
   
 
-  const onScroll = () => {
-    const scrollBar = document.querySelector('.scrollBar');
+  const [scrollBarWidth, setScrollBarWidth] = useState(0);
 
-    const scrollHeight = document.body.scrollHeight - window.innerHeight; 
-    const scrollTop = window.scrollY; 
-    const scrollbarWidth = (scrollTop / scrollHeight) * 100; 
-    
-    scrollBar.style.width = scrollbarWidth + '%';
-  };
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollBar = document.querySelector(".scrollBar");
+      const scrollHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollTop = window.scrollY;
 
-  window.addEventListener("scroll", onScroll);
+      setScrollBarWidth((scrollTop / scrollHeight) * 100);
 
+      scrollBar.style.width = scrollBarWidth + "%";
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [scrollBarWidth]);
 
   return (
     <div>
