@@ -1,32 +1,19 @@
-import { useState } from "react";
 import { Counter } from "../Counter/Counter";
+import { useCount } from "./use-count";
 
 export const DishCounter = () => {
-  const [value, setValue] = useState(0);
+  const { value, increase, decrease } = useCount();
 
-  const increase = () => {
-    if (value < 5) {
-      setValue(value + 1);
-    }
-  };
 
-  const decrease = () => {
-    if (value > 0) {
-      setValue(value - 1);
-    }
-  };
+  // Стабильные ссылки в концепции React - это ссылки, которые при ререндерах остаются одинаковыми
+
+  // Хук useCallback() позволяет создавать стабильные ссылки на создаваемые объекты, как в useEffect()
+  // Создать стабильную ссылку между рендерами - единственная задача хука useCallback()
+
+  // Хук useMemo() используется, чтобы хранить стабильные ссылки на значения. Он сохраняет значение функции, а не саму функцию
+
 
   return (
-    //   <div>
-    //     <button type="button" onClick={increase}>
-    //       +
-    //     </button>
-    //     {value}
-    //     <button type="button" onClick={decrease}>
-    //       -
-    //     </button>
-    //   </div>
-
     <div>
       <Counter value={value} increase={increase} decrease={decrease} />
     </div>
