@@ -1,4 +1,5 @@
-import { Counter } from "../Counter/Counter";
+import { DishCounter } from "../DishCounter/DishCounter";
+import { ReviewForm } from "../Review-form/Review-form";
 
 export const Restaurant = ({ name, menu, reviews }) => {
   if (!reviews.length) {
@@ -21,7 +22,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
         {menu.map((dish) => (
           <li>
             {dish.name}
-            <Counter />
+            <DishCounter />
           </li>
         ))}
       </ul>
@@ -31,6 +32,8 @@ export const Restaurant = ({ name, menu, reviews }) => {
           <li>{review.text}</li>
         ))}
       </ul>
+      <h3>Review form</h3>
+      <ReviewForm />
     </div>
   );
 };
