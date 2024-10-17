@@ -2,8 +2,10 @@ import { useState } from "react";
 import { restaurants } from "../../../materials/mock";
 import { Tab } from "../Tab/Tab";
 import { Restaurant } from "../Restaurant/Restaurant";
+import styles from "./Restaurants-page.module.css";
+import classNames from "classnames";
 
-export const RestaurantsPage = ({ title }) => {
+export const RestaurantsPage = ({ title, isActive }) => {
   const [activeRestaurantId, setActiveRestaurantId] = useState(
     restaurants[0].id
   );
@@ -24,59 +26,16 @@ export const RestaurantsPage = ({ title }) => {
     <div>
       <h2>{title}</h2>
 
-      {restaurants.map(({ name, id }) => (
-        <Tab
-          key={id}
-          title={name}
-          onClick={() => handleSetActiveRestaurantId(id)}
-          isActive={id === activeRestaurantId}
-        />
-      ))}
-
-      {activeRestaurant && (
-        <Restaurant
-          key={activeRestaurant.id}
-          name={activeRestaurant.name}
-          menu={activeRestaurant.menu}
-          reviews={activeRestaurant.reviews}
-        />
-      )}
-
-      {activeRestaurant && (
-        <Restaurant
-          key={activeRestaurant.id}
-          name={activeRestaurant.name}
-          menu={activeRestaurant.menu}
-          reviews={activeRestaurant.reviews}
-        />
-      )}
-
-      {activeRestaurant && (
-        <Restaurant
-          key={activeRestaurant.id}
-          name={activeRestaurant.name}
-          menu={activeRestaurant.menu}
-          reviews={activeRestaurant.reviews}
-        />
-      )}
-
-      {activeRestaurant && (
-        <Restaurant
-          key={activeRestaurant.id}
-          name={activeRestaurant.name}
-          menu={activeRestaurant.menu}
-          reviews={activeRestaurant.reviews}
-        />
-      )}
-
-      {activeRestaurant && (
-        <Restaurant
-          key={activeRestaurant.id}
-          name={activeRestaurant.name}
-          menu={activeRestaurant.menu}
-          reviews={activeRestaurant.reviews}
-        />
-      )}
+      <div className={styles.cuisineList}>
+        {restaurants.map(({ name, id }) => (
+          <Tab
+            key={id}
+            title={name}
+            onClick={() => handleSetActiveRestaurantId(id)}
+            isActive={id === activeRestaurantId}
+          />
+        ))}
+      </div>
 
       {activeRestaurant && (
         <Restaurant
