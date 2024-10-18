@@ -8,7 +8,7 @@ export const App = ({ title }) => {
     <div>
       <Layout>
         <h1>{title}</h1>
-        <RestaurantsPage title={"Заголовок"} />
+        <RestaurantsPage title={"Cuisines"} />
       </Layout>
     </div>
   );

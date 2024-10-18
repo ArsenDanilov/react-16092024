@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import "./ScrollBar.css";
+import styles from "./scrollBar.module.css";
 
 export const ScrollBar = () => {
-  
-
   const [scrollBarWidth, setScrollBarWidth] = useState("0%");
 
   useEffect(() => {
@@ -11,7 +9,7 @@ export const ScrollBar = () => {
       const scrollHeight = document.body.scrollHeight - window.innerHeight;
       const scrollTop = window.scrollY;
 
-      setScrollBarWidth((scrollTop / scrollHeight) * 100 + '%');
+      setScrollBarWidth((scrollTop / scrollHeight) * 100 + "%");
     };
 
     window.addEventListener("scroll", onScroll);
@@ -23,7 +21,7 @@ export const ScrollBar = () => {
 
   return (
     <div>
-      <div className="scrollBar" style={{ width: scrollBarWidth }}></div>
+      <div className={styles.scrollBar} style={{ width: scrollBarWidth }}></div>
     </div>
   );
 };

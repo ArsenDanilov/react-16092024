@@ -1,9 +1,9 @@
 import { Counter } from "../Counter/Counter";
 import { useCount } from "./use-count";
+import styles from "../Counter/counter.module.css";
 
 export const DishCounter = () => {
   const { value, increase, decrease } = useCount();
-
 
   // Стабильные ссылки в концепции React - это ссылки, которые при ререндерах остаются одинаковыми
 
@@ -12,10 +12,14 @@ export const DishCounter = () => {
 
   // Хук useMemo() используется, чтобы хранить стабильные ссылки на значения. Он сохраняет значение функции, а не саму функцию
 
-
   return (
     <div>
-      <Counter value={value} increase={increase} decrease={decrease} />
+      <Counter
+        value={value}
+        increase={increase}
+        decrease={decrease}
+        className={styles.dishCounter}
+      />
     </div>
   );
 };

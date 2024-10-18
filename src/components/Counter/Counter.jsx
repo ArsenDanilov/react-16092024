@@ -1,11 +1,15 @@
-export const Counter = ({ value, increase, decrease }) => {
+import classNames from 'classnames';
+import styles from '../Button/button.module.css'
+import counterStyles from './counter.module.css'
+
+export const Counter = ({ value, increase, decrease, className }) => {
   return (
-    <div>
-      <button type="button" onClick={increase}>
+    <div className={counterStyles.counter}>
+      <button className={classNames(styles.button, className)} type="button" onClick={increase} >
         +
-      </button>
+      </button> 
       {value}
-      <button type="button" onClick={decrease}>
+      <button className={classNames(styles.button, className)} type="button" onClick={decrease}>
         -
       </button>
     </div>
