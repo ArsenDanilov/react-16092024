@@ -1,6 +1,6 @@
 import { Counter } from "../Counter/Counter";
 import { useCount } from "./use-count";
-import styles from "./dishCounter.module.css";
+import styles from "../Counter/counter.module.css";
 
 export const DishCounter = () => {
   const { value, increase, decrease } = useCount();
