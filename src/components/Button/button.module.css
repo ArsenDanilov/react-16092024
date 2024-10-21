@@ -1,0 +1,29 @@
+.button {
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 18px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+}
+
+.button__dish {
+    display: inline-flex;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    width: 36px;
+    height: 36px;
+    background-color: #f0ad4e;
+    border-radius: 2px;
+    border: 0;
+    cursor: pointer;
+}
+
+.button__dish:hover {
+    background-color: #ffd25d;
+}
