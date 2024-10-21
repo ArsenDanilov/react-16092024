@@ -1,17 +1,45 @@
-import classNames from 'classnames';
-import styles from '../Button/button.module.css'
-import counterStyles from './counter.module.css'
+import classNames from "classnames";
+import styles from "../Button/button.module.css";
+import counterStyles from "./counter.module.css";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 export const Counter = ({ value, increase, decrease, className }) => {
+  // let intervalRef = useRef(null); // хук useRef создает объект с полем current, в котором хранится состояние объекта. Оно не стирается  при ререндерах
+  // const buttonRef = useRef(null);
+
+  // useEffect(() => {
+  //   intervalRef.current = setInterval(increase, 1000);
+
+  //   return () => {
+  //     clearInterval(intervalRef);
+  //   };
+  // }, [increase]);
+
+  // const stopInterval = () => clearInterval(intervalRef);
+
+  // useEffect(() => {
+  //   console.log(buttonRef);
+  // }, [])
+
   return (
     <div className={counterStyles.counter}>
-      <button className={classNames(styles.button, className)} type="button" onClick={increase} >
+      <button
+        className={classNames(styles.button, className)}
+        type="button"
+        onClick={increase}
+      >
         +
-      </button> 
+      </button>
       {value}
-      <button className={classNames(styles.button, className)} type="button" onClick={decrease}>
+      <button
+        className={classNames(styles.button, className)}
+        type="button"
+        onClick={decrease}
+      >
         -
       </button>
+      {/* <button ref={buttonRef} onClick={stopInterval}>stop</button> */}
     </div>
   );
 };

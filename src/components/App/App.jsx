@@ -1,15 +1,21 @@
-import { restaurants } from "../../../materials/mock";
-import { Layout } from "../Layout/Layout";
-import { Restaurant } from "../Restaurant/Restaurant";
+import { createContext, useState } from "react";
+import { Layout } from "../Layout/Layout";;
 import { RestaurantsPage } from "../Restaurants-page/Restaurants-page";
+import { Button } from "../Button/Button";
+import { ThemeContextProvider } from "../theme-context/theme-context";
+
+export const ThemeContext = createContext();
 
 export const App = ({ title }) => {
+
   return (
     <div>
-      <Layout>
-        <h1>{title}</h1>
-        <RestaurantsPage title={"Cuisines"} />
-      </Layout>
+      <ThemeContextProvider>
+        <Layout>
+          <h1>{title}</h1>
+          <RestaurantsPage title={"Cuisines"} />
+        </Layout>
+      </ThemeContextProvider>
     </div>
   );
 };

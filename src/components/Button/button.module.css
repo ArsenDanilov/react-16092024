@@ -27,3 +27,13 @@
 .button__dish:hover {
     background-color: #ffd25d;
 }
+
+.light {
+    color: black;
+    background-color: white;
+}
+
+.dark {
+    color: white;
+    background-color: black;
+}
