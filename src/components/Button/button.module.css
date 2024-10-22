@@ -2,7 +2,6 @@
     display: inline-block;
     padding: 5px 12px;
     font-size: 18px;
-    color: black;
     font-family: 'Times New Roman', Times, serif;
     cursor: pointer;
     text-align: center;
@@ -11,29 +10,25 @@
     border: none;
 }
 
-.button__dish {
+/* .button__dish {
     display: inline-flex;
     font-size: 20px;
     font-weight: 700;
-    color: white;
     width: 36px;
     height: 36px;
-    background-color: #f0ad4e;
     border-radius: 2px;
     border: 0;
     cursor: pointer;
-}
+} */
 
-.button__dish:hover {
-    background-color: #ffd25d;
-}
+
 
 .light {
     color: black;
-    background-color: white;
+    background-color: wheat;
 }
 
 .dark {
-    color: white;
+    color: wheat;
     background-color: black;
 }

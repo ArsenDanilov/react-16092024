@@ -1,7 +1,13 @@
 import { Counter } from "../Counter/Counter";
 import { useForm } from "./use-form";
+import styles from "../Button/button.module.css";
+import classNames from "classnames";
+import { useTheme } from "../theme-context/use-theme";
 
 export const ReviewForm = () => {
+
+  const { theme } = useTheme();
+
   const { name, text, rating, setName, setText, setRating, setClear } =
     useForm();
 
@@ -42,7 +48,14 @@ export const ReviewForm = () => {
           decrease={decreaseHandler}
         />
       </div>
-      <button type="reset" onClick={() => setClear()}>
+      <button
+        className={classNames(styles.button, {
+          [styles.light]: theme === "light",
+          [styles.dark]: theme === "dark",
+        })}
+        type="reset"
+        onClick={() => setClear()}
+      >
         clear
       </button>
     </form>

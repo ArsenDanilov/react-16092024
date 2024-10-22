@@ -1,5 +1,6 @@
 import { DishCounter } from "../DishCounter/DishCounter";
 import { ReviewForm } from "../Review-form/Review-form";
+import { useUser } from "../user-context/use-user"; 
 
 export const Restaurant = ({ name, menu, reviews }) => {
   if (!reviews.length) {
@@ -14,6 +15,8 @@ export const Restaurant = ({ name, menu, reviews }) => {
     return null;
   }
 
+  const { isAuth } = useUser();
+
   return (
     <div>
       <h2>{name}</h2>
@@ -22,7 +25,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
         {menu.map((dish) => (
           <li>
             {dish.name}
-            <DishCounter />
+            {isAuth && <DishCounter />}
           </li>
         ))}
       </ul>
@@ -33,7 +36,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
         ))}
       </ul>
       <h3>Review form</h3>
-      <ReviewForm />
+      {isAuth && <ReviewForm />}
     </div>
   );
 };

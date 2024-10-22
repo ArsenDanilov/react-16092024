@@ -1,10 +1,11 @@
 import classNames from "classnames";
 import styles from "../Button/button.module.css";
 import counterStyles from "./counter.module.css";
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useTheme } from "../theme-context/use-theme";
 
 export const Counter = ({ value, increase, decrease, className }) => {
+
+  const { theme } = useTheme();
   // let intervalRef = useRef(null); // хук useRef создает объект с полем current, в котором хранится состояние объекта. Оно не стирается  при ререндерах
   // const buttonRef = useRef(null);
 
@@ -25,7 +26,10 @@ export const Counter = ({ value, increase, decrease, className }) => {
   return (
     <div className={counterStyles.counter}>
       <button
-        className={classNames(styles.button, className)}
+        className={classNames(styles.button, className, {
+          [styles.light]: theme === "light",
+          [styles.dark]: theme === "dark",
+        })}
         type="button"
         onClick={increase}
       >
@@ -33,13 +37,15 @@ export const Counter = ({ value, increase, decrease, className }) => {
       </button>
       {value}
       <button
-        className={classNames(styles.button, className)}
+        className={classNames(styles.button, className, {
+          [styles.light]: theme === "light",
+          [styles.dark]: theme === "dark",
+        })}
         type="button"
         onClick={decrease}
       >
         -
       </button>
-      {/* <button ref={buttonRef} onClick={stopInterval}>stop</button> */}
     </div>
   );
 };
