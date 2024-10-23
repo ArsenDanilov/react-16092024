@@ -15,7 +15,8 @@ export const Restaurant = ({ name, menu, reviews }) => {
     return null;
   }
 
-  const { isAuth } = useUser();
+  const { auth } = useUser();
+  const { isAuthorized } = auth;
 
   return (
     <div>
@@ -25,7 +26,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
         {menu.map((dish) => (
           <li>
             {dish.name}
-            {isAuth && <DishCounter />}
+            {auth.isAuthorized && <DishCounter />}
           </li>
         ))}
       </ul>
@@ -36,7 +37,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
         ))}
       </ul>
       <h3>Review form</h3>
-      {isAuth && <ReviewForm />}
+      {auth.isAuthorized && <ReviewForm />}
     </div>
   );
 };
