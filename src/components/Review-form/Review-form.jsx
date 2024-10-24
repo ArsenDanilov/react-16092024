@@ -1,7 +1,9 @@
 import { Counter } from "../Counter/Counter";
 import { useForm } from "./use-form";
+import { Button } from "../Button/Button";
 
 export const ReviewForm = () => {
+
   const { name, text, rating, setName, setText, setRating, setClear } =
     useForm();
 
@@ -42,9 +44,7 @@ export const ReviewForm = () => {
           decrease={decreaseHandler}
         />
       </div>
-      <button type="reset" onClick={() => setClear()}>
-        clear
-      </button>
+      <Button onClick={() => setClear} type={"reset"} text={"Clear"} />
     </form>
   );
 };
