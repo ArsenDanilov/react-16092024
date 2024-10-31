@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { restaurants } from "../../../materials/mock";
-import { Tab } from "../Tab/Tab";
 import { Restaurant } from "../Restaurant/Restaurant";
 import styles from "./Restaurants-page.module.css";
-import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { selectRestaurantsIds } from "../../redux/Restaurants";
+import { RestaurantTab } from "../restaurant-tab/restaurant-tab";
 
 export const RestaurantsPage = ({ title, isActive }) => {
-  const [activeRestaurantId, setActiveRestaurantId] = useState(
-    restaurants[0].id
-  );
+  const restaurantsIds = useSelector(selectRestaurantsIds); // useSelector - хук, который предоставляет библиотека Redux. В него мы должны передать функцию селектора
 
-  const activeRestaurant = restaurants.find(
-    ({ id }) => id === activeRestaurantId
-  );
+  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantsIds[0]);
 
   const handleSetActiveRestaurantId = (id) => {
     if (activeRestaurantId === id) {
@@ -27,24 +24,17 @@ export const RestaurantsPage = ({ title, isActive }) => {
       <h2>{title}</h2>
 
       <div className={styles.cuisineList}>
-        {restaurants.map(({ name, id }) => (
-          <Tab
+        {restaurants.map(({ id }) => (
+          <RestaurantTab
             key={id}
-            title={name}
+            id={id}
             onClick={() => handleSetActiveRestaurantId(id)}
             isActive={id === activeRestaurantId}
           />
         ))}
       </div>
 
-      {activeRestaurant && (
-        <Restaurant
-          key={activeRestaurant.id}
-          name={activeRestaurant.name}
-          menu={activeRestaurant.menu}
-          reviews={activeRestaurant.reviews}
-        />
-      )}
+      <Restaurant key={activeRestaurantId} id={activeRestaurantId} />
     </div>
   );
 };
