@@ -3,6 +3,7 @@ import { restaurantsSlice } from "./Restaurants";
 import { cartSlice } from "./ui/cart";
 import { dishesSlice } from "./Dishes";
 import { reviewsSlice } from "./Reviews";
+import { usersSlice } from "./User";
 
 
 // 1. функция из библиотеки Redux
@@ -17,6 +18,7 @@ export const store = configureStore({
         [cartSlice.name]: cartSlice.reducer,
         [dishesSlice.name]: dishesSlice.reducer,
         [reviewsSlice.name]: reviewsSlice.reducer,
+        [usersSlice.name]: usersSlice.reducer,
     },
 }) 
 

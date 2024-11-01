@@ -28,13 +28,6 @@ export const DishCounter = ({ id }) => {
 
   return (
     <div>
-      {/* {isAuth && (<h1>Юзер авторизован</h1>)}
-
-      <h3>User auth - {isAuth.toString()}</h3>
-      <button onClick={toggleAuth}>Toggle auth</button>
-      <h4>User name - {name}</h4> 
-      <input type="text" value={name} onKeyUp={(e) => setName(e.key)} /> */}
-
       <Counter
         value={amount}
         increase={increase}

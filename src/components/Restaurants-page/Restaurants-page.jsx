@@ -7,7 +7,7 @@ import { selectRestaurantsIds } from "../../redux/Restaurants";
 import { RestaurantTab } from "../restaurant-tab/restaurant-tab";
 
 export const RestaurantsPage = ({ title, isActive }) => {
-  const restaurantsIds = useSelector(selectRestaurantsIds); // useSelector - хук, который предоставляет библиотека Redux. В него мы должны передать функцию селектора
+  const restaurantsIds = useSelector(selectRestaurantsIds); 
 
   const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantsIds[0]);
 

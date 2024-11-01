@@ -31,19 +31,6 @@ export const cartSlice = createSlice({
 
 console.log(cartSlice);
 console.log(cartSlice.actions.addToCart);
-
-
-
-
-// const map = {
-//     "argumentValue": "returnedValue"
-//     "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2": "result"
-// }
-
-// big O
-// work speed
-// fast speed --------------------------------- low speed
-// huge memory usage --------------------------------- low memory usage
  
 export const { addToCart, removeFromCart } = cartSlice.actions;
 export const { selectCartItems, selectAmountById } = cartSlice.selectors; 
