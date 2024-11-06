@@ -16,8 +16,8 @@ export const reviewsSlice = createSlice({
     selectors: { // селектор - функция, которая выбирает небольшой кусочек этих данных
         selectReviewsIds: (state) => state.ids,
         selectReviews: (state) => state.entities,
-        selectReviewsById: (state, id) => state.entities[id],
+        selectReviewById: (state, id) => state.entities[id],
     },
 });
 
-export const { selectReviewsIds, selectReviews, selectReviewsById} = reviewsSlice.selectors;
+export const { selectReviewsIds, selectReviews, selectReviewById} = reviewsSlice.selectors;

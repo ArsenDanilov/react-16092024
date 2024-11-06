@@ -6,18 +6,18 @@ const initialState = {
         acc[item.id] = item;
 
         return acc;
-    }, {}), // создаем объект, в котором ключами будут айдишники, а значениями - сущности 
-    ids: normalizedUsers.map(({ id }) => id), // создаем массив айдишников сущностей 
+    }, {}), 
+    ids: normalizedUsers.map(({ id }) => id), 
 }
 
 export const usersSlice = createSlice({
     name: "users",
     initialState,
-    selectors: { // селектор - функция, которая выбирает небольшой кусочек этих данных
+    selectors: { 
         selectUsersIds: (state) => state.ids,
         selectUsers: (state) => state.ids.map((id) => state.entities[id]),
-        selectUsersById: (state, id) => state.entities[id],
+        selectUserById: (state, id) => state.entities[id],
     },
 });
 
-export const { selectUsersIds, selectUsers, selectUsersById} = usersSlice.selectors;
+export const { selectUsersIds, selectUsers, selectUserById} = usersSlice.selectors;

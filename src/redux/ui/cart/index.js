@@ -29,8 +29,5 @@ export const cartSlice = createSlice({
     }
 });
 
-console.log(cartSlice);
-console.log(cartSlice.actions.addToCart);
- 
 export const { addToCart, removeFromCart } = cartSlice.actions;
 export const { selectCartItems, selectAmountById } = cartSlice.selectors; 
