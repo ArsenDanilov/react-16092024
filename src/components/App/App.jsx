@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RestaurantPage } from "../Restaurant-page/Restaurant-page";
+import { MenuTab } from "../Menu-tab/Menu-tab";
+import { Menu } from "../Menu/Menu";
+import { Reviews } from "../Reviews/Reviews";
 
 export const ThemeContext = createContext();
 
@@ -16,12 +19,20 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "restaurant",
+        path: "restaurants",
         element: <RestaurantsPage title='Cuisines'/>,
         children: [
           {
             path: ":restaurantId",
             element: <RestaurantPage />,
+            children: [{
+              path: "menu",
+              element: <Menu />,
+            },
+            {
+              path: "reviews",
+              element: <Reviews />,
+            }]
           },
         ],
       },
@@ -36,18 +47,6 @@ const router = createBrowserRouter([
 export const App = ({ title }) => {
   return (
     <div>
-      {/* <RouterProvider router={router}>
-        <Provider store={store}>
-          <ThemeContextProvider>
-            <UserContextProvider>
-              <Layout>
-                <h1>{title}</h1>
-                <RestaurantsPage title={"Cuisines"} />
-              </Layout>
-            </UserContextProvider>
-          </ThemeContextProvider>
-        </Provider>
-      </RouterProvider> */}
       <Provider store={store}>
         <ThemeContextProvider>
           <UserContextProvider>
