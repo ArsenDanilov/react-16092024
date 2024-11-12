@@ -5,36 +5,20 @@ import styles from "./Restaurants-page.module.css";
 import { useSelector } from "react-redux";
 import { selectRestaurantsIds } from "../../redux/Restaurants";
 import { RestaurantTab } from "../restaurant-tab/restaurant-tab";
+import { Outlet } from "react-router-dom";
 
-export const RestaurantsPage = ({ title, isActive }) => {
-  const restaurantsIds = useSelector(selectRestaurantsIds); 
-
-  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantsIds[0]);
-
-  const handleSetActiveRestaurantId = (id) => {
-    if (activeRestaurantId === id) {
-      return;
-    }
-
-    setActiveRestaurantId(id);
-  };
+export const RestaurantsPage = ({ title }) => {
 
   return (
     <div>
       <h2>{title}</h2>
-
       <div className={styles.cuisineList}>
         {restaurants.map(({ id }) => (
-          <RestaurantTab
-            key={id}
-            id={id}
-            onClick={() => handleSetActiveRestaurantId(id)}
-            isActive={id === activeRestaurantId}
-          />
+          <RestaurantTab key={id} id={id} />
         ))}
       </div>
 
-      <Restaurant key={activeRestaurantId} id={activeRestaurantId} />
+      <Outlet />
     </div>
   );
 };

@@ -8,9 +8,11 @@ import { selectReviews } from "../../redux/Reviews";
 import { Review } from "../Review/Review";
 
 export const Restaurant = ({ id }) => {
+
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
   const dishes = useSelector((state) => selectDishes(state));
   const reviewsInfo = useSelector((state) => selectReviews(state));
+  
 
   const { name, menu, reviews } = restaurant || {};
 
@@ -63,4 +65,3 @@ export const Restaurant = ({ id }) => {
   );
 };
 
-//

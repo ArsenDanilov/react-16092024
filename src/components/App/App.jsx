@@ -6,6 +6,7 @@ import { UserContextProvider } from "../user-context/user-context";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RestaurantPage } from "../Restaurant-page/Restaurant-page";
 
 export const ThemeContext = createContext();
 
@@ -16,11 +17,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "restaurant",
-        element: <RestaurantsPage title={"Cuisines"} />,
+        element: <RestaurantsPage title='Cuisines'/>,
         children: [
           {
             path: ":restaurantId",
-            element: <div>123</div>,
+            element: <RestaurantPage />,
           },
         ],
       },

@@ -15,7 +15,7 @@ export const restaurantsSlice = createSlice({
     initialState,
     selectors: { // селектор - функция, которая выбирает небольшой кусочек этих данных
         selectRestaurantsIds: (state) => state.ids,
-        selectRestaurantById: (state, id) => state.entities[id],
+        selectRestaurantById: (state, id) => state.entities[id]
     },
 });
 
