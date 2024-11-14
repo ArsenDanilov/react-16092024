@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import styles from "./button.module.css";
-import { ThemeContext } from "../App/App";
 import { useTheme } from "../theme-context/use-theme";
 
 export const Button = ({ onClick, text, type, isActive, className }) => {

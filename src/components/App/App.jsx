@@ -7,9 +7,9 @@ import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RestaurantPage } from "../Restaurant-page/Restaurant-page";
-import { MenuTab } from "../Menu-tab/Menu-tab";
 import { Menu } from "../Menu/Menu";
 import { Reviews } from "../Reviews/Reviews";
+import { DishPage } from "../Dish-page/Dish-page";
 
 export const ThemeContext = createContext();
 
@@ -20,21 +20,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: "restaurants",
-        element: <RestaurantsPage title='Cuisines'/>,
+        element: <RestaurantsPage title="Cuisines" />,
         children: [
           {
             path: ":restaurantId",
             element: <RestaurantPage />,
-            children: [{
-              path: "menu",
-              element: <Menu />,
-            },
-            {
-              path: "reviews",
-              element: <Reviews />,
-            }]
+            children: [
+              {
+                path: "menu",
+                element: <Menu />,
+              },
+              {
+                path: "reviews",
+                element: <Reviews />,
+              },
+            ],
           },
         ],
+      },
+      {
+        path: "/dish/:dishId",
+        element: <DishPage />,
       },
       {
         path: "/about",

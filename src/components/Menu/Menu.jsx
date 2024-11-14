@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux";
-import { DishCounter } from "../DishCounter/DishCounter";
-import { useUser } from "../user-context/use-user";
 import { selectRestaurantById } from "../../redux/Restaurants";
 import { selectDishes } from "../../redux/Dishes";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const Menu = () => {
   const { restaurantId } = useParams();
@@ -22,8 +20,8 @@ export const Menu = () => {
     return null;
   }
 
-  const { auth } = useUser();
-  const { isAuthorized } = auth;
+  // const { auth } = useUser();
+  // const { isAuthorized } = auth;
 
   return (
     <div>
@@ -31,8 +29,11 @@ export const Menu = () => {
       <ul>
         {currentDishes.map((dish) => (
           <li key={dish.id}>
-            {dish.name}
-            {auth.isAuthorized && <DishCounter id={dish.id} />}
+            <Link to={`/dish/${dish.id}`}>{dish.name}</Link>;
+            {/* <p>{dish.name}</p>
+            <p>{dish.price}</p>
+            <p>{dish.ingredients}</p>
+            {auth.isAuthorized && <DishCounter id={dish.id} />} */}
           </li>
         ))}
       </ul>
