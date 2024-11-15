@@ -1,23 +1,14 @@
-import { useEffect, useCallback, useState } from "react";
+import { useState } from "react";
 import { useClock } from "./useClock";
 
 export const Clock = () => {
-  const [currentTime, setCurrentTime] = useState();
+ const [currentTime, setCurrentTime] = useState();
 
-  const { timerIntervalId } = useClock(setCurrentTime);
-
-  const clearTime = useCallback(() => {
-    clearInterval(timerIntervalId);
-  }, [timerIntervalId]);
-
-  useEffect(() => {
-
-    return () => clearTime();
-  }, [currentTime, clearTime, timerIntervalId]);
+  useClock(setCurrentTime);
 
   return (
     <div>
-      <h1>{currentTime}</h1>
+      <h1 style={{ color: "white"}}>{currentTime}</h1>
     </div>
   );
 };

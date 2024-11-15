@@ -4,8 +4,6 @@ import { useUser } from "../user-context/use-user";
 import { selectDishById } from "../../redux/Dishes";
 import { useParams } from "react-router-dom";
 
-selectDishById
-
 export const DishPage = () => {
   const { dishId } = useParams();
 

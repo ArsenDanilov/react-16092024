@@ -38,6 +38,10 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // {
+      //   path: "/restaurants/:restaurantId",
+      //   element: <RestaurantPage />,
+      // },
       {
         path: "/dish/:dishId",
         element: <DishPage />,
@@ -57,10 +61,10 @@ export const App = ({ title }) => {
         <ThemeContextProvider>
           <UserContextProvider>
             <RouterProvider router={router}>
-              <Layout>
+              {/* <Layout>
                 <h1>{title}</h1>
                 <RestaurantsPage title={"Cuisines"} />
-              </Layout>
+              </Layout> */}
             </RouterProvider>
           </UserContextProvider>
         </ThemeContextProvider>
