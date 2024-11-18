@@ -6,6 +6,6 @@ export const Review = ({ key, text, rating, userId }) => {
     const user = useSelector((state) => selectUserById(state, userId));
 
     return (
-        <p>[{rating}] {user.name} : {text}</p>
+        <p key={key}>[{rating}] {user.name} : {text}</p>
     )
 }
