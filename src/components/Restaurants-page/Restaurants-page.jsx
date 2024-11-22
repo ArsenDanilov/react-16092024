@@ -6,13 +6,21 @@ import { Outlet, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getRestaurants } from "../../redux/Restaurants/get-restaurants";
 
+import { getDishes } from "../../redux/Dishes/get-dishes";
+
+window.test2 = getDishes;
+
+console.log(window.test2);
+
 export const RestaurantsPage = ({ title }) => {
   const { restaurantId } = useParams();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('use effect in Rest Page');
     dispatch(getRestaurants());
+    // dispatch(getDishes());
   }, [dispatch]);
 
   const restaurants = useSelector((state) => selectRestaurantsIds(state));

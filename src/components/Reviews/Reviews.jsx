@@ -1,29 +1,42 @@
-import { useSelector } from "react-redux";
-import { ReviewForm } from "../Review-form/Review-form";
-import { useUser } from "../user-context/use-user";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/Restaurants";
-import { selectReviews } from "../../redux/Reviews";
+import { selectReviews, selectReviewsRequestStatus } from "../../redux/Reviews";
 import { Review } from "../Review/Review";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getReviews } from "../../redux/Reviews/get-reviews";
+
 
 export const Reviews = () => {
   const { restaurantId } = useParams();
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getReviews()); 
+  }, [dispatch]);
+
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
+
   const reviewsInfo = useSelector((state) => selectReviews(state));
+
+  const requestStatus = useSelector(selectReviewsRequestStatus);
+
+  if (requestStatus === "idle" || requestStatus === "pending"){ 
+    return (
+      <br/>
+    );
+  }
 
   const { reviews } = restaurant || {};
 
-  const currentReviews = reviews.map((id) => reviewsInfo[id]);
+  const currentReviews = reviews.map((id) => reviewsInfo[id]);  
 
   if (!reviews.length) {
     return null;
   }
-
-  const { auth } = useUser();
-  const { isAuthorized } = auth;
 
   return (
     <div>
@@ -39,8 +52,6 @@ export const Reviews = () => {
           </li>
         ))}
       </ul>
-      <h3>Review form</h3>
-      {auth.isAuthorized && <ReviewForm />}
     </div>
   );
 };
