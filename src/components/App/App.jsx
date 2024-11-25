@@ -38,10 +38,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: "/restaurants/:restaurantId",
-      //   element: <RestaurantPage />,
-      // },
       {
         path: "/dish/:dishId",
         element: <DishPage />,

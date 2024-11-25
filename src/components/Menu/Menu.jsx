@@ -1,16 +1,35 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/Restaurants";
-import { selectDishes } from "../../redux/Dishes";
+import { selectDishes, selectDishesRequestStatus } from "../../redux/Dishes";
 import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getDishes } from "../../redux/Dishes/get-dishes";
 
 export const Menu = () => {
   const { restaurantId } = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDishes());
+  }, [dispatch]);
 
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
 
   const dishes = useSelector((state) => selectDishes(state));
+  console.log(dishes);
+
+  const requestStatus = useSelector(selectDishesRequestStatus);
+
+  if (requestStatus === "idle" || requestStatus === "pending") {
+    return (
+      <div>
+        <p>loading...</p>
+      </div>
+    );
+  }
 
   const { menu } = restaurant || {};
 
@@ -20,9 +39,6 @@ export const Menu = () => {
     return null;
   }
 
-  // const { auth } = useUser();
-  // const { isAuthorized } = auth;
-
   return (
     <div>
       <h3>Menu:</h3>
@@ -30,10 +46,6 @@ export const Menu = () => {
         {currentDishes.map((dish) => (
           <li key={dish.id}>
             <Link to={`/dish/${dish.id}`}>{dish.name}</Link>;
-            {/* <p>{dish.name}</p>
-            <p>{dish.price}</p>
-            <p>{dish.ingredients}</p>
-            {auth.isAuthorized && <DishCounter id={dish.id} />} */}
           </li>
         ))}
       </ul>

@@ -1,23 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedDishes } from "../../../materials/normalized-mock";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { getDishes } from "./get-dishes";
 
-const initialState = {
-    entities: normalizedDishes.reduce((acc, item) => {
-        acc[item.id] = item;
+const entityAdapter = createEntityAdapter();
 
-        return acc;
-    }, {}), // создаем объект, в котором ключами будут айдишники, а значениями - сущности 
-    ids: normalizedDishes.map(({ id }) => id), // создаем массив айдишников сущностей 
-}
+const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
+
 
 export const dishesSlice = createSlice({
     name: "dishes",
-    initialState,
-    selectors: { // селектор - функция, которая выбирает небольшой кусочек этих данных
+    initialState: entityAdapter.getInitialState({ requestStatus: "idle" }),
+    selectors: {
         selectDishesIds: (state) => state.ids,
         selectDishes: (state) => state.entities,
         selectDishById: (state, id) => state.entities[id],
+        selectDishesRequestStatus: (state) => state.requestStatus,
     },
+    extraReducers: (builder) => builder
+        .addCase(getDishes.pending, (state) => {
+            state.requestStatus = PENDING;
+        })
+        .addCase(getDishes.fulfilled, (state, { payload }) => {
+            entityAdapter.setAll(state, payload);
+            state.requestStatus = FULFILLED;
+        })
+        .addCase(getDishes.rejected, (state) => {
+            state.requestStatus = REJECTED;
+        })
 });
 
-export const { selectDishesIds, selectDishes, selectDishById} = dishesSlice.selectors;
+export const { selectDishesIds, selectDishes, selectDishById, selectDishesRequestStatus } = dishesSlice.selectors;
