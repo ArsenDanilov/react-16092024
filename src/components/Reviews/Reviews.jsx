@@ -5,6 +5,7 @@ import { Review } from "../Review/Review";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getReviews } from "../../redux/Reviews/get-reviews";
+import { getUsers } from "../../redux/User/get-users";
 
 
 export const Reviews = () => {
@@ -14,6 +15,7 @@ export const Reviews = () => {
 
   useEffect(() => {
     dispatch(getReviews()); 
+    dispatch(getUsers());
   }, [dispatch]);
 
   const restaurant = useSelector((state) =>
@@ -26,7 +28,7 @@ export const Reviews = () => {
 
   if (requestStatus === "idle" || requestStatus === "pending"){ 
     return (
-      <br/>
+      'loading'
     );
   }
 
