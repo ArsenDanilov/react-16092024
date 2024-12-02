@@ -1,39 +1,33 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/Restaurants";
-import { selectDishes, selectDishesRequestStatus } from "../../redux/Dishes";
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { getDishes } from "../../redux/Dishes/get-dishes";
+import { useGetDishesQuery, useGetRestaurantByIdQuery } from "../../redux/services/api/api";
+
+
 
 export const Menu = () => {
   const { restaurantId } = useParams();
 
-  const dispatch = useDispatch();
+  const { data: restaurant, isLoading, isError  } = useGetRestaurantByIdQuery(restaurantId);
 
-  useEffect(() => {
-    dispatch(getDishes());
-  }, [dispatch]);
+  const { data: dataDishes } = useGetDishesQuery();
 
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
-
-  const dishes = useSelector((state) => selectDishes(state));
-  console.log(dishes);
-
-  const requestStatus = useSelector(selectDishesRequestStatus);
-
-  if (requestStatus === "idle" || requestStatus === "pending") {
-    return (
-      <div>
-        <p>loading...</p>
-      </div>
-    );
+  if (isLoading) {
+    return "loading";
   }
 
-  const { menu } = restaurant || {};
+  if (isError) {
+    return "error";
+  }
 
-  const currentDishes = menu.map((id) => dishes[id]);
+  if (!dataDishes?.length) {
+    return null;
+  }  
+
+  const { menu } = restaurant || { menu: [] };
+  
+  const currentDishes = dataDishes.filter((dish) => menu.includes(dish.id));
+
+  console.log(currentDishes);
+  
 
   if (!menu.length) {
     return null;

@@ -1,21 +1,32 @@
-import { useSelector } from "react-redux";
-import { selectUserById, selectUsersRequestStatus } from "../../redux/User";
+import { useGetUsersQuery } from "../../redux/services/api/api";
+import { useUser } from "../user-context/use-user";
 
 export const Review = ({ key, text, rating, userId }) => {
 
-  const user = useSelector((state) => selectUserById(state, userId));
+  const { data: usersArr, isLoading, isError } = useGetUsersQuery();
 
-  const requestStatus = useSelector(selectUsersRequestStatus);
+  const { auth } = useUser();
 
-  if (requestStatus === "idle" || requestStatus === "pending"){ 
-    return (
-      'loading'
-    );
+  if (isLoading) {
+    return "loading";
   }
 
-  return (
+  if (isError) {
+    return "error";
+  }
+
+  console.log(userId === auth.id)
+
+  const user = usersArr.find(findedUser => findedUser.id === userId);
+
+  console.log(userId);
+  
+
+  const name = user? user.name : auth.name;
+
+  return (  
     <p key={key}>
-      [{rating}] {user.name} : {text}
+      [{rating}] {name} : {text}
     </p>
   );
 };

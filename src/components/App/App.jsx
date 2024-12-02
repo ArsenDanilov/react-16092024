@@ -51,6 +51,8 @@ const router = createBrowserRouter([
 ]);
 
 export const App = ({ title }) => {
+  console.log('app re rendered');
+  
   return (
     <div>
       <Provider store={store}>

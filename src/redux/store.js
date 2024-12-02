@@ -4,6 +4,8 @@ import { cartSlice } from "./ui/cart";
 import { dishesSlice } from "./Dishes";
 import { reviewsSlice } from "./Reviews";
 import { usersSlice } from "./User";
+import { requestsSlice } from "./ui/request";
+import { apiSlice } from "./services/api/api";
 
 
 // 1. функция из библиотеки Redux
@@ -19,6 +21,9 @@ export const store = configureStore({
         [dishesSlice.name]: dishesSlice.reducer,
         [reviewsSlice.name]: reviewsSlice.reducer,
         [usersSlice.name]: usersSlice.reducer,
+        [requestsSlice.name]: requestsSlice.reducer,
+        [apiSlice.reducerPath]: apiSlice.reducer,
     },
+    middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(apiSlice.middleware),
 }) 
 

@@ -1,9 +1,9 @@
 import { Counter } from "../Counter/Counter";
 import { useForm } from "./use-form";
 import { Button } from "../Button/Button";
+import { useAddReviewMutation } from "../../redux/services/api/api";
 
-export const ReviewForm = () => {
-
+export const ReviewForm = ({ restaurantId }) => {
   const { name, text, rating, setName, setText, setRating, setClear } =
     useForm();
 
@@ -17,6 +17,9 @@ export const ReviewForm = () => {
       setRating(rating - 1);
     }
   };
+
+
+  const [addReview] = useAddReviewMutation();
 
   return (
     <form action="" onReset={() => setClear()}>
@@ -45,6 +48,14 @@ export const ReviewForm = () => {
         />
       </div>
       <Button onClick={() => setClear} type={"reset"} text={"Clear"} />
+      <Button
+        onClick={() => addReview({ restaurantId, review: {
+          name, 
+          text,
+          rating,
+        } })}
+        text={"Submit"}
+      />
     </form>
   );
 };
