@@ -50,17 +50,14 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const App = ({ title }) => {
+export const App = () => {
+  
   return (
     <div>
       <Provider store={store}>
         <ThemeContextProvider>
           <UserContextProvider>
             <RouterProvider router={router}>
-              {/* <Layout>
-                <h1>{title}</h1>
-                <RestaurantsPage title={"Cuisines"} />
-              </Layout> */}
             </RouterProvider>
           </UserContextProvider>
         </ThemeContextProvider>

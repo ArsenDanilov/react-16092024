@@ -1,59 +1,60 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/Restaurants";
-import { selectReviews, selectReviewsRequestStatus } from "../../redux/Reviews";
 import { Review } from "../Review/Review";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { getReviews } from "../../redux/Reviews/get-reviews";
-import { getUsers } from "../../redux/User/get-users";
+import { ReviewForm } from "../Review-form/Review-form";
+import { useGetReviewsByRestaurantIdQuery, useGetUsersQuery} from "../../redux/services/api/api";
+import { useUser } from "../user-context/use-user";
 
 
 export const Reviews = () => {
   const { restaurantId } = useParams();
 
-  const dispatch = useDispatch();
+  const { data: reviews, isFetching, isError } = useGetReviewsByRestaurantIdQuery(restaurantId);
 
-  useEffect(() => {
-    dispatch(getReviews()); 
-    dispatch(getUsers());
-  }, [dispatch]);
+  const { auth } = useUser();
 
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
+  const { data: usersArr, isLoading: userIsLoading, isError: userIsError } = useGetUsersQuery(); 
 
-  const reviewsInfo = useSelector((state) => selectReviews(state));
-
-  const requestStatus = useSelector(selectReviewsRequestStatus);
-
-  if (requestStatus === "idle" || requestStatus === "pending"){ 
-    return (
-      'loading'
-    );
+  if (!reviews?.length) {
+    return null;
   }
 
-  const { reviews } = restaurant || {};
+  if(isFetching) {
+    return 'loading';
+  }
 
-  const currentReviews = reviews.map((id) => reviewsInfo[id]);  
+  if (isError) {
+    return 'error';
+  }
 
-  if (!reviews.length) {
+  if (!usersArr?.length) {
     return null;
+  }
+
+  if(userIsLoading) {
+    return 'loading';
+  }
+
+  if (userIsError) {
+    return 'error';
   }
 
   return (
     <div>
       <h3>Reviews:</h3>
       <ul>
-        {currentReviews.map((review) => (
+        {reviews?.map((review) => (
           <li key={review.id}>
             <Review
               rating={review.rating}
               text={review.text}
-              userId={review.userId}
+              user={usersArr.find(findedUser => findedUser.id === review.userId)}
             />
           </li>
         ))}
       </ul>
+      {auth.isAuthorized && (
+        <ReviewForm restaurantId={restaurantId} />
+      )}
     </div>
   );
 };

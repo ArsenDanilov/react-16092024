@@ -1,21 +1,14 @@
-import { useSelector } from "react-redux";
-import { selectUserById, selectUsersRequestStatus } from "../../redux/User";
+import { useUser } from "../user-context/use-user";
 
-export const Review = ({ key, text, rating, userId }) => {
+export const Review = ({ key, text, rating, user }) => {
 
-  const user = useSelector((state) => selectUserById(state, userId));
+  const { auth } = useUser();
 
-  const requestStatus = useSelector(selectUsersRequestStatus);
+  const name = user? user.name : auth.name;
 
-  if (requestStatus === "idle" || requestStatus === "pending"){ 
-    return (
-      'loading'
-    );
-  }
-
-  return (
+  return (  
     <p key={key}>
-      [{rating}] {user.name} : {text}
+      [{rating}] {name} : {text}
     </p>
   );
 };

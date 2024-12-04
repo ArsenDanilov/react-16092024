@@ -1,49 +1,28 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/Restaurants";
-import { selectDishes, selectDishesRequestStatus } from "../../redux/Dishes";
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { getDishes } from "../../redux/Dishes/get-dishes";
+import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api";
 
 export const Menu = () => {
   const { restaurantId } = useParams();
 
-  const dispatch = useDispatch();
+  const { data: dishes, isFetching, isError } = useGetDishesByRestaurantIdQuery(restaurantId);
 
-  useEffect(() => {
-    dispatch(getDishes());
-  }, [dispatch]);
-
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
-
-  const dishes = useSelector((state) => selectDishes(state));
-  console.log(dishes);
-
-  const requestStatus = useSelector(selectDishesRequestStatus);
-
-  if (requestStatus === "idle" || requestStatus === "pending") {
-    return (
-      <div>
-        <p>loading...</p>
-      </div>
-    );
+  if (!dishes?.length) {
+    return null;
   }
 
-  const { menu } = restaurant || {};
+  if (isFetching) {
+    return "loading";
+  }
 
-  const currentDishes = menu.map((id) => dishes[id]);
-
-  if (!menu.length) {
-    return null;
+  if (isError) {
+    return "error";
   }
 
   return (
     <div>
       <h3>Menu:</h3>
       <ul>
-        {currentDishes.map((dish) => (
+        {dishes.map((dish) => (
           <li key={dish.id}>
             <Link to={`/dish/${dish.id}`}>{dish.name}</Link>;
           </li>
