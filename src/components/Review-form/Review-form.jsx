@@ -22,7 +22,7 @@ export const ReviewForm = ({ restaurantId }) => {
   const [addReview] = useAddReviewMutation();
 
   return (
-    <form action="" onReset={() => setClear()}>
+    <form action="" onReset={() => setClear()} onSubmit={(e) => e.preventDefault()}>
       <div>
         <span>name</span>
         <input

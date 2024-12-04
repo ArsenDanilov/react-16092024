@@ -1,7 +1,7 @@
 import { Review } from "../Review/Review";
 import { useParams } from "react-router-dom";
 import { ReviewForm } from "../Review-form/Review-form";
-import { useGetReviewsByRestaurantIdQuery} from "../../redux/services/api/api";
+import { useGetReviewsByRestaurantIdQuery, useGetUsersQuery} from "../../redux/services/api/api";
 import { useUser } from "../user-context/use-user";
 
 
@@ -12,18 +12,31 @@ export const Reviews = () => {
 
   const { auth } = useUser();
 
+  const { data: usersArr, isLoading: userIsLoading, isError: userIsError } = useGetUsersQuery(); 
+
   if (!reviews?.length) {
     return null;
   }
 
   if(isFetching) {
-    return 'loadingg';
+    return 'loading';
   }
 
   if (isError) {
     return 'error';
   }
 
+  if (!usersArr?.length) {
+    return null;
+  }
+
+  if(userIsLoading) {
+    return 'loading';
+  }
+
+  if (userIsError) {
+    return 'error';
+  }
 
   return (
     <div>
@@ -34,7 +47,7 @@ export const Reviews = () => {
             <Review
               rating={review.rating}
               text={review.text}
-              userId={review.userId}
+              user={usersArr.find(findedUser => findedUser.id === review.userId)}
             />
           </li>
         ))}

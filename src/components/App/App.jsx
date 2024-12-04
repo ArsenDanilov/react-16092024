@@ -50,8 +50,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const App = ({ title }) => {
-  console.log('app re rendered');
+export const App = () => {
   
   return (
     <div>
@@ -59,10 +58,6 @@ export const App = ({ title }) => {
         <ThemeContextProvider>
           <UserContextProvider>
             <RouterProvider router={router}>
-              {/* <Layout>
-                <h1>{title}</h1>
-                <RestaurantsPage title={"Cuisines"} />
-              </Layout> */}
             </RouterProvider>
           </UserContextProvider>
         </ThemeContextProvider>

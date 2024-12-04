@@ -14,6 +14,14 @@ export const apiSlice = createApi({
             query: (id) => `/reviews?restaurantId=${id}`,
             providesTags: (id) => [{ type: 'Reviews', id }],
         }),
+        getDishesByRestaurantId: builder.query({
+            query: (id) => `/dishes?restaurantId=${id}`,
+            providesTags: (id) => [{ type: 'Dishes', id }],
+        }),
+        getDishById: builder.query({
+            query: (id) => `/dish/${id}`,
+            providesTags: (id) => [{ type: 'Dish', id }],
+        }),
         addReview: builder.mutation({
             query: ({ restaurantId, review }) => ({
                 method: "POST",
@@ -27,4 +35,4 @@ export const apiSlice = createApi({
     })
 })
 
-export const { useGetRestaurantsQuery, useAddReviewMutation, useGetRestaurantByIdQuery, useGetDishesQuery, useGetReviewsQuery, useGetUsersQuery, useGetReviewsByRestaurantIdQuery } = apiSlice;
+export const { useGetRestaurantsQuery, useAddReviewMutation, useGetRestaurantByIdQuery, useGetDishesQuery, useGetReviewsQuery, useGetUsersQuery, useGetReviewsByRestaurantIdQuery, useGetDishesByRestaurantIdQuery, useGetDishByIdQuery } = apiSlice;
