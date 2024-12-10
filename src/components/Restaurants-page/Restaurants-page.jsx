@@ -23,9 +23,10 @@ export const RestaurantsPage = ({ title }) => {
 
 
   return (
-    <div>
-      <h2>{title}</h2>
+    <div className={styles.restaurantsPage}>
+      
       <div className={styles.cuisineList}> 
+      <span>{title}</span>
         {data.map(({name, id}) => (
           <RestaurantTab key={id} name={name} id={id} isActive={id === restaurantId} />
         ))}

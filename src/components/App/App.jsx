@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "restaurants",
-        element: <RestaurantsPage title="Cuisines" />,
+        element: <RestaurantsPage title="Cuisines:" />,
         children: [
           {
             path: ":restaurantId",
