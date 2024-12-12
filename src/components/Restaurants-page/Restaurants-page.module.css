@@ -1,8 +1,15 @@
 .cuisineList {
     display: flex;
-    gap: 5px;
+    gap: 10px;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+
+.restaurantsPage {
+    background-color: white;;
+    font-size: 18px;
+    padding: 10px 0;
 }
 

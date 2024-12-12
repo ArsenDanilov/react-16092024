@@ -11,7 +11,7 @@ export const Clock = () => {
 
   return (
     <div>
-      <h1 style={{ color: "white" }}>{time}</h1>
+      <h2 style={{ color: "white" }}>{time}</h2>
     </div>
   );
 };

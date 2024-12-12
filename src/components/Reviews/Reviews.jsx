@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ReviewForm } from "../Review-form/Review-form";
 import { useGetReviewsByRestaurantIdQuery, useGetUsersQuery} from "../../redux/services/api/api";
 import { useUser } from "../user-context/use-user";
+import styles from "./reviews.module.css"
 
 
 export const Reviews = () => {
@@ -39,8 +40,7 @@ export const Reviews = () => {
   }
 
   return (
-    <div>
-      <h3>Reviews:</h3>
+    <div className={styles.reviews}>
       <ul>
         {reviews?.map((review) => (
           <li key={review.id}>
