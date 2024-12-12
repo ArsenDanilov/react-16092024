@@ -1,0 +1,41 @@
+.restaurantCard {
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    border: 1px solid #8080803d;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 780px;
+    transition: all 0.3s;
+}
+
+.restaurantCard:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+.restaurantCard__imgWrapper {
+    width: 102px;
+    height: 102px;
+}
+
+.restaurantCard__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.restaurantCard__info {
+
+}
+
+.restaurantCard__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.restaurantCard__subtitle {
+    font-size: 16px;
+    font-weight: 100;
+}

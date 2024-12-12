@@ -1,0 +1,31 @@
+.reviewForm {
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 25px;
+    border: 1px solid #8080803d;
+}
+
+.reviewForm__title {
+    margin-bottom: 15px;
+}
+
+.reviewForm__text {
+    padding: 9px 16px;
+    border-radius: 4px;
+    outline: none;
+    transition: all .2s;
+    border: 1px solid #c4c4c4;
+    width: 100%;
+    max-width: 70%;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.reviewForm__rating {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}

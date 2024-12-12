@@ -1,19 +1,13 @@
 import classNames from "classnames";
 import styles from "../Button/button.module.css";
 import counterStyles from "./counter.module.css";
-import { useTheme } from "../theme-context/use-theme";
 
 export const Counter = ({ value, increase, decrease, className }) => {
-
-  const { theme } = useTheme();
 
   return (
     <div className={counterStyles.counter}>
       <button
-        className={classNames(styles.button, className, {
-          [styles.light]: theme === "light",
-          [styles.dark]: theme === "dark",
-        })}
+        className={classNames(styles.button, className)}
         type="button"
         onClick={increase}
       >
@@ -21,10 +15,7 @@ export const Counter = ({ value, increase, decrease, className }) => {
       </button>
       {value}
       <button
-        className={classNames(styles.button, className, {
-          [styles.light]: theme === "light",
-          [styles.dark]: theme === "dark",
-        })}
+        className={classNames(styles.button, className)}
         type="button"
         onClick={decrease}
       >

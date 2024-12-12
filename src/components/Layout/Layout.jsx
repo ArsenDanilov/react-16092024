@@ -11,7 +11,6 @@ import { Banner } from "../Banner/Banner";
 export const Layout = () => {
   return (
     <div>
-      <ScrollBar />
       <BackButton />
       <ToggleThemeButton />
       <Header />
