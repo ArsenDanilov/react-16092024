@@ -1,25 +1,24 @@
 .counter {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
     gap: 5px;
 }
 
-.dishCounter {
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-    width: 36px;
-    height: 36px;
+.counter__value {
+    color: grey;
+    font-size: 18px;
+    font-weight: 300;
 }
 
-.dark {
-    background-color: #f0ad4e;
-    color: black;
+.counter__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
 }
 
-
-.light {
-    background-color: black;
-    color: #f0ad4e;
+.counter__minus {
+    
 }
 

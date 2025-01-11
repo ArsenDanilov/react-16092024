@@ -10,7 +10,7 @@ export const Authorization = () => {
   return (
     <div className={styles.authorization}>
         {isAuthorized && name && <h3 className={styles.authorization__username}>{auth.name}</h3>}
-        <Button onClick={toggleAuth} text={isAuthorized ? "Sign out" : "Sign in"} />
+        <Button onClick={toggleAuth} text={isAuthorized ? "Sign out" : "Sign in"} className={styles.authorization__button}/>
       </div>
   );
 };

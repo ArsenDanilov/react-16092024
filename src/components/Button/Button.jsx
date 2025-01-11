@@ -1,14 +1,14 @@
 import classNames from "classnames";
 import styles from "./button.module.css";
 
-export const Button = ({ onClick, text, type, isActive }) => {
+export const Button = ({ onClick, text, type, isActive, className }) => {
 
   return (
     <button
       onClick={onClick}
       type={type}
       disabled={isActive}
-      className={styles.button}
+      className={classNames(styles.button, className)}
     >
       {text}
     </button>
