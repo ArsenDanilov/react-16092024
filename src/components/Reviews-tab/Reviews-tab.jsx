@@ -5,5 +5,7 @@ export const ReviewsTab = () => {
 
   const navigate = useNavigate();
 
-  return <Tab title={'Reviews'} onClick={() => navigate('reviews')} />;
+  const isActive = location.pathname.endsWith('reviews');
+
+  return <Tab title={'Reviews'} onClick={() => navigate('reviews')} isActive={isActive}/>;
 };
