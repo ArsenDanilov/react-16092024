@@ -1,5 +1,19 @@
 .menu {
-    padding: 30px 500px;
+    padding: 30px;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px; */
+}
+
+.menu__container {
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
 }
 
 .menu__list{
@@ -8,6 +22,7 @@
     flex-direction: column;
     /* align-items: center; */
     gap: 20px;
+    width: 48%;
 }
 
 .menu__item{
