@@ -1,19 +1,17 @@
 import { Counter } from "../Counter/Counter";
-import styles from "../Counter/counter.module.css";
-import { useTheme } from "../theme-context/use-theme";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart, selectAmountById } from "../../redux/ui/cart";
+import dishCounterStyles from "./dishCounter.module.css";
 
-export const DishCounter = ({ id }) => {
+export const DishCounter = ({ id, price }) => {
 
   const amount = useSelector((state) => selectAmountById(state, id));
 
   const dispatch = useDispatch();
 
-  const increase = () => dispatch(addToCart(id));
-  const decrease = () => dispatch(removeFromCart(id));
+  const increase = () => dispatch(addToCart({ id, price }));
+  const decrease = () => dispatch(removeFromCart({ id, price }));
 
-  const { theme } = useTheme();
   // const { isAuth, toggleAuth, name, setName } = useUser();
 
   // const { isAuth, toggleAuth, name, setName } = useContext(UserContext);
@@ -32,13 +30,14 @@ export const DishCounter = ({ id }) => {
         value={amount}
         increase={increase}
         decrease={decrease}
-        className={
-          (styles.dishCounter,
-          {
-            [styles.light]: theme === "light",
-            [styles.dark]: theme === "dark",
-          })
-        }
+        // className={
+        //   (dishCounterStyles.dishCounter,
+        //   {
+        //     [styles.light]: theme === "light",
+        //     [styles.dark]: theme === "dark",
+        //   })
+        // }
+        className={dishCounterStyles.dishCounter}
       />
     </div>
   );

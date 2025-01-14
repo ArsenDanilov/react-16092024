@@ -5,5 +5,7 @@ export const MenuTab = () => {
 
   const navigate = useNavigate();
 
-  return <Tab title={'Menu'} onClick={() => navigate('menu')} />;
+  const isActive = location.pathname.endsWith('menu');
+
+  return <Tab title={'Menu'} onClick={() => navigate('menu')} isActive={isActive}/>;
 };

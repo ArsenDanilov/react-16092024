@@ -1,17 +1,19 @@
-import { useGetRestaurantByIdQuery } from "../../redux/services/api/api";
+import { useGetDishByIdQuery } from "../../redux/services/api/api";
+import styles from "./cartItem.module.css";
 
 export const CartItem = ({ id, amount }) => {
-  const { data } = useGetRestaurantByIdQuery(id);
-
-  const { name } = data || {};
+  const { data } = useGetDishByIdQuery(id);
+  
+  const { name, price } = data || {};
 
   if (!name) {
     return null;
   }
 
   return (
-    <div>
-      {name} - {amount}
+    <div className={styles.cartItem}>
+      <p>{name}</p>
+      <p>{price * amount} $</p>
     </div>
   );
 };

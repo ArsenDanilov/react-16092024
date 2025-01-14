@@ -26,7 +26,7 @@ export const DishPage = () => {
   return (
     <ul>
       <li key={dish.id}>
-        <p>{`Название блюда: ${dish.name}`}</p>
+        <p>{`Название блюда: `}</p>
         <p>{`Цена блюда: ${dish.price}$`}</p>
         <p>{`Ингредиенты блюда: ${dish.ingredients}`}</p>
         {isAuthorized && <DishCounter id={dish.id} />}

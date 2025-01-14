@@ -3,9 +3,16 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 15px;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
 }
 
 .authorization__username {
     color: wheat;
     font-size: 20px;
+}
+
+.authorization__button {
+    color: white;
 }

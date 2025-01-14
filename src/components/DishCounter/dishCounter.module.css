@@ -1,0 +1,11 @@
+.dishCounter {
+    color: white;
+    background-color: #f0ad4e;
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,23 @@
+.dish {
+    padding: 20px 26px;
+    border: 1px solid rgba(128, 128, 128, 0.219);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dish__name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.dish__ingredients {
+    margin-bottom: 10px;
+}
+
+.dish__price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f0ad4e;
+}

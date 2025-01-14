@@ -3,24 +3,25 @@ import styles from "../Button/button.module.css";
 import counterStyles from "./counter.module.css";
 
 export const Counter = ({ value, increase, decrease, className }) => {
-
   return (
     <div className={counterStyles.counter}>
-      <button
-        className={classNames(styles.button, className)}
-        type="button"
-        onClick={increase}
-      >
-        +
-      </button>
-      {value}
-      <button
-        className={classNames(styles.button, className)}
-        type="button"
-        onClick={decrease}
-      >
-        -
-      </button>
+      <div className={counterStyles.counter__value}>{value}</div>
+      <div className={counterStyles.counter__buttons}>
+        <button
+          className={classNames(styles.button, className)}
+          type="button"
+          onClick={decrease}
+        >
+          <span className={counterStyles.counter__minus}>-</span>
+        </button>
+        <button
+          className={classNames(styles.button, className)}
+          type="button"
+          onClick={increase}
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 };

@@ -9,14 +9,8 @@
     border-radius: 5px;
     border: none;
     background-color: transparent;
-    color: black;
 }
 
-
-.light {
-    color: black;
-    background-color: black;
-}
 
 .button__counter {
     background-color: #f0ad4e;
@@ -24,9 +18,4 @@
     border-radius: 2px;
     font-size: 20px;
     font-weight: 900;
-}
-
-.dark {
-    color: black;
-    background-color: black;
 }
