@@ -4,13 +4,16 @@ import { CartItem } from "../CartItem/CartItem";
 import styles from "./cart.module.css";
 import classNames from "classnames";
 import { Button } from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
   const items = useSelector(selectCartItems);
 
   const totalPrice = useSelector(selectTotalPrice);
 
-  console.log(totalPrice);
+  const navigate = useNavigate();
+
+  const isCheckoutPage = location.pathname.endsWith("/checkout");
 
   if (!items.length) {
     return (
@@ -19,6 +22,8 @@ export const Cart = () => {
       </div>
     );
   }
+
+  const handleCheckout = () => navigate("/checkout");
 
   return (
     <div className={styles.cart}>
@@ -37,11 +42,23 @@ export const Cart = () => {
           <span>Delivery costs:</span>
           <span>FREE</span>
         </p>
-        <p className={classNames(styles.cart__subtitle, styles.cart__subtitle_total)}>
+        <p
+          className={classNames(
+            styles.cart__subtitle,
+            styles.cart__subtitle_total
+          )}
+        >
           <span>total</span>
           <span>{totalPrice} $</span>
         </p>
-        <Button text={'CHECKOUT'} type={'submit'} className={styles.cart__button}/>
+        {!isCheckoutPage && (
+          <Button
+            onClick={handleCheckout}
+            text={"CHECKOUT"}
+            type={"submit"}
+            className={styles.cart__button}
+          />
+        )}
       </div>
     </div>
   );
