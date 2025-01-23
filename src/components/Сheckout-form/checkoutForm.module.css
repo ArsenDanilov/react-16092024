@@ -1,5 +1,5 @@
 .checkoutForm {
-    max-width: 46%;
+    width: 46%;
 }
 
 .checkoutForm__fields {
@@ -10,6 +10,10 @@
 .checkoutForm__label {
     width: 100%;
     margin-bottom: 24px;
+}
+
+.checkoutForm__error {
+    color: red;
 }
 
 .checkoutForm__name {
@@ -28,6 +32,10 @@
     border-radius: 4px;
     padding: 9px 16px;
     box-sizing: border-box;
+}
+
+.checkoutForm__input_error {
+    border: 1px solid red;
 }
 
 .checkoutForm__textarea {
