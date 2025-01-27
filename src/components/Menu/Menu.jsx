@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Cart } from "../Cart/Cart";
 import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api";
 import styles from "./menu.module.css";

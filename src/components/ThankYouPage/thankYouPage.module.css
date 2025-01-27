@@ -1,0 +1,14 @@
+.thankYou {
+    padding: 200px 0 40px;
+}
+
+.thankYou__container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.thankYou__text {
+    text-align: center;
+    font-size: 50px;
+    color: #49ab39;
+}

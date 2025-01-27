@@ -10,45 +10,10 @@ import { RestaurantPage } from "../Restaurant-page/Restaurant-page";
 import { Menu } from "../Menu/Menu";
 import { Reviews } from "../Reviews/Reviews";
 import { DishPage } from "../Dish-page/Dish-page";
+import { Checkout } from "../Checkout/Checkout";
+import { ThankYouPage } from "../ThankYouPage/ThankYouPage";
 
 export const ThemeContext = createContext();
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Layout />,
-//     children: [
-//       {
-//         path: "restaurants",
-//         element: <RestaurantsPage title="Cuisines:" />,
-//         children: [
-//           {
-//             path: ":restaurantId",
-//             element: <RestaurantPage />,
-//             children: [
-//               {
-//                 path: "menu",
-//                 element: <Menu />,
-//               },
-//               {
-//                 path: "reviews",
-//                 element: <Reviews />,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//       {
-//         path: "/dish/:dishId",
-//         element: <DishPage />,
-//       },
-//       {
-//         path: "/about",
-//         element: <div>about</div>,
-//       },
-//     ],
-//   },
-// ]);
 
 const router = createBrowserRouter([
   {
@@ -78,8 +43,12 @@ const router = createBrowserRouter([
         element: <DishPage />,
       },
       {
-        path: "/about",
-        element: <div>about</div>,
+        path: "/checkout",
+        element: <Checkout /> ,
+      },
+      {
+        path: "/thankyou",
+        element: <ThankYouPage /> ,
       },
     ],
   },

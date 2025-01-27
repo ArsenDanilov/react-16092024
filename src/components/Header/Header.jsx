@@ -8,18 +8,12 @@ import { BackButton } from "../Back-button/Back-button";
 export const Header = () => {
 
   const location = useLocation();
-
-  console.log(location);
   
-  const isRestaurantPage = location.pathname.startsWith('/restaurant/');
-
-  console.log(isRestaurantPage);
-  
-
+  const isHomePage = location.pathname.endsWith('/restaurants');
 
   return (
     <header className={styles.header}>
-      {isRestaurantPage && <BackButton />}
+      {!isHomePage && <BackButton />}
       <Logo />
       <Authorization />
     </header>

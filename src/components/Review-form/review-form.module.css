@@ -29,3 +29,16 @@
     gap: 15px;
     margin-bottom: 15px;
 }
+
+.reviewForm__submitBtn {
+    line-height: 28px;
+    border-radius: 4px;
+    color: #f0ad4e;
+    border: 1.7px solid #f0ad4e;
+    transition: all 0.3s;
+}
+
+.reviewForm__submitBtn:hover {
+    border: 1.7px solid #ffd25d;
+    color: #ffd25d;
+}
