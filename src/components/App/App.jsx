@@ -5,7 +5,7 @@ import { ThemeContextProvider } from "../theme-context/theme-context";
 import { UserContextProvider } from "../user-context/user-context";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import { RestaurantPage } from "../Restaurant-page/Restaurant-page";
 import { Menu } from "../Menu/Menu";
 import { Reviews } from "../Reviews/Reviews";
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
+      {
+        path: "/",
+        element: <Navigate to="/restaurants" replace />,
+      },
       {
         path: "restaurants",
         element: <RestaurantsPage title="Cuisines:" />,
