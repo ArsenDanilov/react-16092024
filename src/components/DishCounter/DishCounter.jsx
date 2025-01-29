@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart, selectAmountById } from "../../redux/ui/cart";
 import dishCounterStyles from "./dishCounter.module.css";
 
-export const DishCounter = ({ id, price }) => {
+export const DishCounter = ({ id, price, name }) => {
 
   const amount = useSelector((state) => selectAmountById(state, id));
 
   const dispatch = useDispatch();
 
-  const increase = () => dispatch(addToCart({ id, price }));
-  const decrease = () => dispatch(removeFromCart({ id, price }));
+  const increase = () => dispatch(addToCart({ id, price, name }));
+  const decrease = () => dispatch(removeFromCart({ id, price, name }));
 
   // const { isAuth, toggleAuth, name, setName } = useUser();
 

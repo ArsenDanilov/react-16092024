@@ -31,9 +31,9 @@ export const Cart = () => {
         <p className={styles.cart__title}>Basket</p>
       </div>
       <ul className={styles.cart__list}>
-        {items.map(({ id, amount }) => (
+        {items.map(({ id, amount, price, name }) => (
           <li className={styles.cart__element} key={id}>
-            <CartItem id={id} amount={amount} />
+            <CartItem amount={amount} price={price} name={name} />
           </li>
         ))}
       </ul>

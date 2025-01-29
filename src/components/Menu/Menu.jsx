@@ -13,8 +13,6 @@ export const Menu = () => {
     isError,
   } = useGetDishesByRestaurantIdQuery(restaurantId);
 
-  console.log(dishes);
-
   if (!dishes?.length) {
     return null;
   }
@@ -32,9 +30,6 @@ export const Menu = () => {
       <div className={styles.menu__container}>
         <ul className={styles.menu__list}>
           {dishes.map((dish) => (
-            // <li className={styles.menu__item} key={dish.id}>
-            //   <Link to={`/dish/${dish.id}`}>{dish.name}</Link>;
-            // </li>
             <li key={dish.id}>
               <Dish
                 name={dish.name}
