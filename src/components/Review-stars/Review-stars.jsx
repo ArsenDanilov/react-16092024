@@ -5,6 +5,10 @@ export const ReviewStars = ({ setRating, rating }) => {
   const handleStarClick = (index) => {
     const newRating = rating === index ? index - 1 : index;
     setRating(newRating);
+
+    if (setRating) {
+      setRating(newRating);
+    }
   };
 
   return (
