@@ -2,7 +2,8 @@ const normalizedRestaurants = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
     name: "Dishoom",
-    description: "Японская кухня",
+    description: "Japanese cousine",
+    rating: 4,
     img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
     menu: [
       "d75f762a-eadd-49be-8918-ed0daa8dd024",
@@ -17,7 +18,8 @@ const normalizedRestaurants = [
   {
     id: "bb8afbec-2fec-491f-93e9-7f13950dd80b",
     name: "Homeslice",
-    description: "Итальянская кухня",
+    description: "Italian cousine",
+    rating: 4,
     img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
     menu: [
       "25402233-0095-49ea-9939-1e67ed89ffb9",
@@ -32,7 +34,8 @@ const normalizedRestaurants = [
   {
     id: "982bfbce-c5e0-41a0-9f99-d5c20ecee49d",
     name: "Fabrique",
-    description: "Русская кухня",
+    description: "Russian cousine",
+    rating: 5,
     img: "https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80",
     menu: [
       "08c9ffa0-d003-4310-9e15-20978743296e",
@@ -44,7 +47,8 @@ const normalizedRestaurants = [
   {
     id: "d9241927-09e1-44f3-8986-a76346869037",
     name: "Flat Iron",
-    description: "Грузинская кухня",
+    description: "Georgian cousine",
+    rating: 5,
     img: "https://images.unsplash.com/photo-1559314809-0d155014e29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
     menu: [
       "6c02c2ce-b868-4191-b4a7-8686429f4bac",

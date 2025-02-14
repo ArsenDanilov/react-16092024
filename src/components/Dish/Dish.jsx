@@ -13,7 +13,7 @@ export const Dish = ({ name, price, ingredients, id }) => {
       <div className={styles.dish__info}>
         <p className={styles.dish__name}>{name}</p>
         <p className={styles.dish__ingredients}>{joinedIngregients}</p>
-        <p className={styles.dish__price}>{`Цена блюда: ${price}.00 $`}</p>
+        <p className={styles.dish__price}>{`Price: ${price}.00 $`}</p>
       </div>
       <div className={styles.dish__counter}>
         {isAuthorized && <DishCounter id={id} price={price} name={name} />}
