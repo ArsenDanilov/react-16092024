@@ -1,45 +1,52 @@
 .checkoutForm {
-    width: 46%;
+  width: 100%;
 }
 
 .checkoutForm__fields {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .checkoutForm__label {
-    width: 100%;
-    margin-bottom: 24px;
+  width: 100%;
+  margin-bottom: 24px;
 }
 
 .checkoutForm__error {
-    color: red;
+  color: red;
 }
 
 .checkoutForm__name {
-    display: block;
-    margin-bottom: 6px;
-    color: #999;
-    line-height: 1.3;
-    font-weight: 400;
+  display: block;
+  margin-bottom: 6px;
+  color: #999;
+  line-height: 1.3;
+  font-weight: 400;
 }
 
 .checkoutForm__input {
-    width: 100%;
-    height: 38px;
-    outline: none;
-    border: 1px solid #c4c4c4;
-    border-radius: 4px;
-    padding: 9px 16px;
-    box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  outline: none;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  padding: 9px 16px;
+  box-sizing: border-box;
 }
 
 .checkoutForm__input_error {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .checkoutForm__textarea {
-    min-height: 84px;
-    max-width: 100%;
-    min-width: 100%;
+  min-height: 84px;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+/* Vertical Tablet */
+@media (min-width: 768px) {
+  .checkoutForm {
+    width: 45%;
+  }
 }
