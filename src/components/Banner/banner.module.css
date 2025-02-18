@@ -1,6 +1,7 @@
 .banner {
   position: relative;
   height: 108px;
+  margin-top: 64px;
 }
 
 .banner__wrapper {

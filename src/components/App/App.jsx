@@ -12,6 +12,9 @@ import { Reviews } from "../Reviews/Reviews";
 import { DishPage } from "../Dish-page/Dish-page";
 import { Checkout } from "../Checkout/Checkout";
 import { ThankYouPage } from "../ThankYouPage/ThankYouPage";
+import { UserAgreement } from "../User-agreement/User-agreement";
+import { LicenseAgreement } from "../License-agreement/License-agreement";
+import { Confidentiality } from "../Confidentiality/Confidentiality";
 
 export const ThemeContext = createContext();
 
@@ -53,6 +56,18 @@ const router = createBrowserRouter([
       {
         path: "/thankyou",
         element: <ThankYouPage /> ,
+      },
+      {
+        path: "/user-agreement",
+        element: <UserAgreement /> ,
+      },
+      {
+        path: "/license-agreement",
+        element: <LicenseAgreement /> ,
+      },
+      {
+        path: "/confidentiality",
+        element: <Confidentiality /> ,
       },
     ],
   },
