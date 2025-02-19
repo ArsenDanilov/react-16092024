@@ -15,6 +15,7 @@ import { ThankYouPage } from "../ThankYouPage/ThankYouPage";
 import { UserAgreement } from "../User-agreement/User-agreement";
 import { LicenseAgreement } from "../License-agreement/License-agreement";
 import { Confidentiality } from "../Confidentiality/Confidentiality";
+import styles from "./app.module.css";
 
 export const ThemeContext = createContext();
 
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
 export const App = () => {
   
   return (
-    <div>
+    <div className={styles.app}>
       <Provider store={store}>
         <ThemeContextProvider>
           <UserContextProvider>
