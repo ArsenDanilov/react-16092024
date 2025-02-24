@@ -3,6 +3,7 @@ import { Cart } from "../Cart/Cart";
 import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api";
 import styles from "./menu.module.css";
 import { Dish } from "../Dish/Dish";
+import { Loader } from "../Loader/Loader";
 
 export const Menu = () => {
   const { restaurantId } = useParams();
@@ -13,14 +14,12 @@ export const Menu = () => {
     isError,
   } = useGetDishesByRestaurantIdQuery(restaurantId);
 
-  console.log(dishes);
+  if (isFetching) {
+    return <Loader />;
+  }
 
   if (!dishes?.length) {
     return null;
-  }
-
-  if (isFetching) {
-    return "loading";
   }
 
   if (isError) {
@@ -32,9 +31,6 @@ export const Menu = () => {
       <div className={styles.menu__container}>
         <ul className={styles.menu__list}>
           {dishes.map((dish) => (
-            // <li className={styles.menu__item} key={dish.id}>
-            //   <Link to={`/dish/${dish.id}`}>{dish.name}</Link>;
-            // </li>
             <li key={dish.id}>
               <Dish
                 name={dish.name}

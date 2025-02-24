@@ -11,7 +11,6 @@ export const Banner = () => {
       <div className={styles.banner__wrapper}>
         <h2 className={styles.banner__title}>Order Food</h2>
         <h3 className={styles.banner__subtitle}>From 175 Restaurants</h3>
-        <p className={styles.banner__rating}>*здесь нужно добавить рейтинг в виде звезд*</p>
       </div>
     </div>
   );

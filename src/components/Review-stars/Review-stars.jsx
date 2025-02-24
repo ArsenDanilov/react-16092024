@@ -1,30 +1,28 @@
-import { useState } from "react";
 import { ReviewStar } from "../Review-star/Review-star";
 
 export const ReviewStars = ({ setRating, rating }) => {
-  const [selectedStars, setSelectedStars] = useState(0);
-
+  
   const handleStarClick = (index) => {
-    if (selectedStars === index) {
-      setSelectedStars(index - 1);
-    } else {
-      setSelectedStars(index);
+    const newRating = rating === index ? index - 1 : index;
+    setRating(newRating);
+
+    if (setRating) {
+      setRating(newRating);
     }
-
-    rating = index;
-
-    setRating(rating);
   };
 
   return (
     <div>
-      {Array.from({ length: 5 }, (_, index) => (
-        <ReviewStar
-          key={index}
-          isSelected={index < selectedStars}
-          onClick={() => handleStarClick(index + 1)}
-        />
-      ))}
+      {Array.from({ length: 5 }, (_, index) => {
+        const starIndex = index + 1;
+        return (
+          <ReviewStar
+            key={starIndex}
+            isSelected={starIndex <= rating}
+            onClick={() => handleStarClick(starIndex)}
+          />
+        );
+      })}
     </div>
   );
 };

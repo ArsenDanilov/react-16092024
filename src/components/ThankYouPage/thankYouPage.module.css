@@ -1,14 +1,25 @@
 .thankYou {
-    padding: 200px 0 40px;
-}
-
-.thankYou__container {
-    max-width: 900px;
-    margin: 0 auto;
+  padding: 100px 0 40px;
 }
 
 .thankYou__text {
-    text-align: center;
+  text-align: center;
+  font-size: 30px;
+  color: #49ab39;
+}
+
+/* Vertical Tablet */
+@media (min-width: 768px) {
+  .thankYou {
+    padding: 200px 0 40px;
+  }
+
+  .thankYou__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .thankYou__text {
     font-size: 50px;
-    color: #49ab39;
+  }
 }
