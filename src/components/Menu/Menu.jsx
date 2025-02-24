@@ -3,6 +3,7 @@ import { Cart } from "../Cart/Cart";
 import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api";
 import styles from "./menu.module.css";
 import { Dish } from "../Dish/Dish";
+import { Loader } from "../Loader/Loader";
 
 export const Menu = () => {
   const { restaurantId } = useParams();
@@ -13,12 +14,12 @@ export const Menu = () => {
     isError,
   } = useGetDishesByRestaurantIdQuery(restaurantId);
 
-  if (!dishes?.length) {
-    return null;
+  if (isFetching) {
+    return <Loader />;
   }
 
-  if (isFetching) {
-    return "loading";
+  if (!dishes?.length) {
+    return null;
   }
 
   if (isError) {

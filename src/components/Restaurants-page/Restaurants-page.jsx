@@ -1,13 +1,14 @@
 import styles from "./Restaurants-page.module.css";
 import { useGetRestaurantsQuery } from "../../redux/services/api/api";
 import { RestaurantCard } from "../Restaurant-card/Restaurant-card";
+import { Loader } from "../Loader/Loader";
 
 export const RestaurantsPage = () => {
   
   const { data, isLoading, isError } = useGetRestaurantsQuery();
 
   if (isLoading) {
-    return "loading";
+     return <Loader />;
   }
 
   if (isError) {

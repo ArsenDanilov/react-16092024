@@ -1,6 +1,5 @@
 import { Button } from "../Button/Button";
 import styles from './tab.module.css'
-import { useNavigate } from "react-router-dom";
 
 export const Tab = ({ title, onClick, isActive }) => {
 
