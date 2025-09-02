@@ -2,7 +2,7 @@
   "name": "react-16092024",
   "homepage": "https://arsendanilov.github.io/react-16092024/",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
